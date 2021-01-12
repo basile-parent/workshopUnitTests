@@ -1,6 +1,6 @@
 package com.bparent.workshop.unittests.controller;
 
-import com.bparent.workshop.unittests.bean.FrameWithScore;
+import com.bparent.workshop.unittests.bean.Frame;
 import com.bparent.workshop.unittests.bean.Shot;
 import com.bparent.workshop.unittests.bo.BowlingGame;
 import com.bparent.workshop.unittests.service.ScoreService;
@@ -27,7 +27,7 @@ public class BowlingController {
     public ResponseEntity<String> addShootAndCalculateScore(@RequestBody Shot shot) {
         game.addShoot(shot.getShotValue());
 
-        List<FrameWithScore> frames = scoreService.calculateScore(game);
+        List<Frame> frames = scoreService.calculateScore(game);
         return ResponseEntity.ok(ScoreFormatter.formatScore(frames));
     }
 
