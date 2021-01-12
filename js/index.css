@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#score-table li {
+    position: relative;
+    display: inline-block;
+    border: 1px solid black;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.frame-score {
+    display: inline-block;
+    padding-top: 42px;
+}
+
+.frame-shots {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    top: -1px;
+    right: 0;
+}
+
+.frame-shots div {
+    display: inline-block;
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    padding: 0;
+    margin-right: -1px;
+}
+
+.frame-shot-index {
+    background-color: black;
+    color: white;
+    margin-right: auto !important;
+}
