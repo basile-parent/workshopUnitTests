@@ -1,0 +1,20 @@
+package com.bparent.workshop.unittests.util;
+
+import com.bparent.workshop.unittests.bean.FrameWithScore;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class ScoreFormatter {
+
+    private ScoreFormatter() {}
+
+    public static String formatScore(List<FrameWithScore> frames) {
+        String firstLine = frames.stream().map(frame -> StringUtils.rightPad(frame.getFrame().toString(), 10)).collect(Collectors.joining());
+        String secondLine = frames.stream().map(frame -> StringUtils.rightPad(String.valueOf(frame.getScore()), 10)).collect(Collectors.joining());
+
+        return String.format("%s\n%s", firstLine, secondLine);
+    }
+
+}
