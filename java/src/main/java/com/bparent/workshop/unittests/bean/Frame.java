@@ -43,4 +43,8 @@ public class Frame {
         return this.firstShot == null ||
                 (this.firstShot != 10 && this.secondShot == null);
     }
+    
+    public String getDisplayScore() {
+        return formatShot(this.score);
+    }
 }
