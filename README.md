@@ -4,12 +4,11 @@
 First, clone this repo.
 
 ### Java import
-First possibility open the whole project and import the java folder as module (F4 -> Modules -> "+" button -> Import Module -> choose the pom.xml file)
+Create new project from the **java** folder : File -> New -> Project from existing source
 
-![Open folder on IntelliJ](doc/open-folder.jpg) 
-![Import java folder as module on IntelliJ](doc/import-module.jpg) 
+![Create new project from existing sources on IntelliJ](doc/existing-sources.jpg)
 
-![Select pom.xml file on IntelliJ](doc/select-pom.jpg)
+![Open folder on IntelliJ](doc/new-project.jpg) 
 
 You can test installation is done by :
 - running the tests :
@@ -18,8 +17,7 @@ You can test installation is done by :
 - launching server and make a call (via Postman or equivalent) to http://localhost:8080/ping 
 
 ### JS import
-Either open the whole project or select the "js" folder with File -> New -> Project from existing source
-![Create new project from existing sources on IntelliJ](doc/existing-sources.jpg)
+Create new project from the **js** folder : File -> New -> Project from existing source
 
 You can test installation is done by :
 - opening index.html file
