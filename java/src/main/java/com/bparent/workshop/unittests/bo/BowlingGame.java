@@ -21,7 +21,27 @@ public class BowlingGame {
     }
 
     public void addShoot(Integer shotValue) {
+        Frame firstAvailableFrame = frames.stream()
+                .filter(Frame::canAcceptShot)
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("All shots are done"));
+        firstAvailableFrame.registerShot(shotValue);
 
+        this.calculateScore();
+    }
+
+    private void calculateScore() {
+        for (int i = 0; i < this.frames.size(); i++) {
+            Frame frame = this.frames.get(i);
+            if (frame.getFirstShot() == null && frame.getSecondShot() == null) {
+                break;
+            }
+            Integer score = frame.getFirstShot();
+            if (frame.getSecondShot() != null) {
+                score += frame.getSecondShot();
+            }
+            frame.setScore(score);
+        }
     }
 
     public void clear() {
