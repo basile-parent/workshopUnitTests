@@ -4,14 +4,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 @NoArgsConstructor
 @Getter
 public class Frame {
 
-    private Integer firstShot;
-    private Integer secondShot;
+    protected Integer firstShot;
+    protected Integer secondShot;
     @Setter
-    private Integer score;
+    protected Integer score;
 
     public void registerShot(Integer shotValue) {
         if (!canAcceptShot()) {
@@ -31,7 +36,14 @@ public class Frame {
         }
     }
 
-    private String formatShot(Integer shotValue) {
+    public List<Integer> getAllShots() {
+        return Stream.of(
+                this.firstShot,
+                this.secondShot
+        ).filter(Objects::nonNull).collect(Collectors.toList());
+    }
+
+    protected String formatShot(Integer shotValue) {
         return shotValue == null ? "-" : String.valueOf(shotValue);
     }
 

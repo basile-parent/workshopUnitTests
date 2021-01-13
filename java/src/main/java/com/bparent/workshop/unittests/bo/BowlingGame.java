@@ -34,15 +34,12 @@ public class BowlingGame {
         Integer score = 0;
         for (int i = 0; i < this.frames.size(); i++) {
             Frame frame = this.frames.get(i);
-            if (frame.getFirstShot() == null && frame.getSecondShot() == null) {
+            List<Integer> allShots = frame.getAllShots();
+            if (allShots.size() == 0) {
                 break;
             }
-            if (frame.getFirstShot() != null) {
-                score += frame.getFirstShot();
-            }
-            if (frame.getSecondShot() != null) {
-                score += frame.getSecondShot();
-            }
+
+            score += allShots.stream().reduce(0, Integer::sum);
 
             if (frame.isSpare()) {
                 score += this.getNextTosses(i, 1);
@@ -60,17 +57,17 @@ public class BowlingGame {
         int nextTossesSum = 0;
         while (tossRemaining > 0 && indexCursor < this.frames.size()) {
             Frame nextFrame = this.getFrames().get(indexCursor);
-            if (nextFrame.getFirstShot() == null) {
+            List<Integer> allShots = nextFrame.getAllShots();
+            if (allShots.size() == 0) {
                 break;
             }
-            nextTossesSum += nextFrame.getFirstShot();
-            tossRemaining--;
-            if (tossRemaining == 0) {
-                break;
-            }
-            if (nextFrame.getSecondShot() != null) {
-                nextTossesSum += nextFrame.getSecondShot();
+
+            for (Integer shot : allShots) {
+                nextTossesSum += shot;
                 tossRemaining--;
+                if (tossRemaining == 0) {
+                    break;
+                }
             }
 
             indexCursor++;

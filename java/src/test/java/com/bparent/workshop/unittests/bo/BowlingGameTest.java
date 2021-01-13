@@ -213,4 +213,27 @@ class BowlingGameTest {
         assertNull(game.getFrames().get(2).getSecondShot());
     }
 
+    @Test
+    public void addShoot_should_calculate_300_points_for_a_perfect_game() {
+        // Given
+        BowlingGame game = new BowlingGame();
+        game.addShoot(10); // Frame 1
+        game.addShoot(10); // Frame 2
+        game.addShoot(10); // Frame 3
+        game.addShoot(10); // Frame 4
+        game.addShoot(10); // Frame 5
+        game.addShoot(10); // Frame 6
+        game.addShoot(10); // Frame 7
+        game.addShoot(10); // Frame 8
+        game.addShoot(10); // Frame 9
+
+        // When
+        game.addShoot(10); // Frame 10
+        game.addShoot(10); // Frame 10
+        game.addShoot(10); // Frame 10
+
+        // Then
+        assertEquals(300, game.getFrames().get(9).getScore());
+    }
+
 }

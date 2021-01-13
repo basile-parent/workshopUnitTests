@@ -2,6 +2,8 @@ package com.bparent.workshop.unittests.bean;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class FrameTest {
@@ -196,6 +198,62 @@ class FrameTest {
 
         // Then
         assertTrue(isStrike);
+    }
+
+    @Test
+    public void getAllShots_should_return_list_of_2_integers_if_the_2_shots_are_done() {
+        // Given
+        Frame frame = new Frame();
+        frame.registerShot(1);
+        frame.registerShot(2);
+
+        // When
+        List<Integer> allShots = frame.getAllShots();
+
+        // Then
+        assertEquals(2, allShots.size());
+        assertEquals(1, allShots.get(0));
+        assertEquals(2, allShots.get(1));
+    }
+
+    @Test
+    public void getAllShots_should_return_list_of_1_integers_if_1_shot_is_done() {
+        // Given
+        Frame frame = new Frame();
+        frame.registerShot(1);
+
+        // When
+        List<Integer> allShots = frame.getAllShots();
+
+        // Then
+        assertEquals(1, allShots.size());
+        assertEquals(1, allShots.get(0));
+    }
+
+    @Test
+    public void getAllShots_should_return_list_of_1_integers_if_player_has_done_a_strike() {
+        // Given
+        Frame frame = new Frame();
+        frame.registerShot(10);
+
+        // When
+        List<Integer> allShots = frame.getAllShots();
+
+        // Then
+        assertEquals(1, allShots.size());
+        assertEquals(10, allShots.get(0));
+    }
+
+    @Test
+    public void getAllShots_should_return_a_void_list_if_no_shot_is_done() {
+        // Given
+        Frame frame = new Frame();
+
+        // When
+        List<Integer> allShots = frame.getAllShots();
+
+        // Then
+        assertEquals(0, allShots.size());
     }
 
 }
