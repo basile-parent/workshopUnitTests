@@ -8,11 +8,13 @@ import com.bparent.workshop.unittests.util.ScoreFormatter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/game")
 public class BowlingController {
 
     private static final BowlingGame game = new BowlingGame();
@@ -34,7 +36,7 @@ public class BowlingController {
     @PostMapping("/clear")
     public ResponseEntity<String> clearScore() {
         game.clear();
-        return ResponseEntity.ok("Cleared");
+        return ResponseEntity.ok("Cleareddd");
     }
 
 }
