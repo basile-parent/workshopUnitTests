@@ -13,10 +13,10 @@ import java.util.stream.Stream;
 @Getter
 public class Frame {
 
-    private Integer firstShot;
-    private Integer secondShot;
+    protected Integer firstShot;
+    protected Integer secondShot;
     @Setter
-    private Integer score;
+    protected Integer score;
 
     public void registerShot(Integer shotValue) {
         if (!canAcceptShot()) {
@@ -43,7 +43,7 @@ public class Frame {
         ).filter(Objects::nonNull).collect(Collectors.toList());
     }
 
-    private String formatShot(Integer shotValue) {
+    protected String formatShot(Integer shotValue) {
         return shotValue == null ? "-" : String.valueOf(shotValue);
     }
 
