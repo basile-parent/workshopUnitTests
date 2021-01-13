@@ -12,7 +12,7 @@ public class ScoreFormatter {
 
     public static String formatScore(List<Frame> frames) {
         String firstLine = frames.stream().map(frame -> StringUtils.rightPad(frame.toString(), 10)).collect(Collectors.joining());
-        String secondLine = frames.stream().map(frame -> StringUtils.rightPad(String.valueOf(frame.getScore()), 10)).collect(Collectors.joining());
+        String secondLine = frames.stream().map(frame -> StringUtils.rightPad(frame.getDisplayScore(), 10)).collect(Collectors.joining());
 
         return String.format("%s\n%s", firstLine, secondLine);
     }
