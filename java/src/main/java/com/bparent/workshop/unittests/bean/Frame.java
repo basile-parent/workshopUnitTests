@@ -39,12 +39,22 @@ public class Frame {
         return String.format("[%s | %s]", formatShot(this.firstShot), formatShot(this.secondShot));
     }
 
+    public String getDisplayScore() {
+        return formatShot(this.score);
+    }
+
     public boolean canAcceptShot() {
         return this.firstShot == null ||
                 (this.firstShot != 10 && this.secondShot == null);
     }
-    
-    public String getDisplayScore() {
-        return formatShot(this.score);
+
+    public boolean isSpare() {
+        return this.firstShot != null && this.secondShot != null &&
+                this.firstShot + this.secondShot == 10;
     }
+
+    public boolean isStrike() {
+        return this.firstShot != null && this.firstShot == 10;
+    }
+
 }

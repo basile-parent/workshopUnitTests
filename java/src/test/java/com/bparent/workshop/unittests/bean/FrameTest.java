@@ -115,4 +115,87 @@ class FrameTest {
         assertFalse(canAcceptShot);
     }
 
+    @Test
+    public void isSpare_should_return_false_if_sum_of_score_is_less_than_10() {
+        // Given
+        Frame frame = new Frame();
+        frame.registerShot(4);
+        frame.registerShot(3);
+
+        // When
+        boolean isSpare = frame.isSpare();
+
+        // Then
+        assertFalse(isSpare);
+    }
+
+    @Test
+    public void isSpare_should_return_true_if_sum_of_score_is_10() {
+        // Given
+        Frame frame = new Frame();
+        frame.registerShot(7);
+        frame.registerShot(3);
+
+        // When
+        boolean isSpare = frame.isSpare();
+
+        // Then
+        assertTrue(isSpare);
+    }
+
+    @Test
+    public void isSpare_should_return_false_if_first_shot_is_10() {
+        // Given
+        Frame frame = new Frame();
+        frame.registerShot(10);
+
+        // When
+        boolean isSpare = frame.isSpare();
+
+        // Then
+        assertFalse(isSpare);
+    }
+
+    @Test
+    public void isStrike_should_return_false_if_first_shot_is_not_10() {
+        // Given
+        Frame frame = new Frame();
+        frame.registerShot(4);
+        frame.registerShot(3);
+
+        // When
+        boolean isStrike = frame.isStrike();
+
+        // Then
+        assertFalse(isStrike);
+    }
+
+    @Test
+    public void isStrike_should_return_false_if_is_a_spare() {
+        // Given
+        Frame frame = new Frame();
+        frame.registerShot(7);
+        frame.registerShot(3);
+
+        // When
+        boolean isStrike = frame.isStrike();
+
+        // Then
+        assertFalse(isStrike);
+    }
+
+
+    @Test
+    public void isStrike_should_return_true_if_first_shot_is_10() {
+        // Given
+        Frame frame = new Frame();
+        frame.registerShot(10);
+
+        // When
+        boolean isStrike = frame.isStrike();
+
+        // Then
+        assertTrue(isStrike);
+    }
+
 }

@@ -31,17 +31,52 @@ public class BowlingGame {
     }
 
     private void calculateScore() {
+        Integer score = 0;
         for (int i = 0; i < this.frames.size(); i++) {
             Frame frame = this.frames.get(i);
             if (frame.getFirstShot() == null && frame.getSecondShot() == null) {
                 break;
             }
-            Integer score = frame.getFirstShot();
+            if (frame.getFirstShot() != null) {
+                score += frame.getFirstShot();
+            }
             if (frame.getSecondShot() != null) {
                 score += frame.getSecondShot();
             }
+
+            if (frame.isSpare()) {
+                score += this.getNextTosses(i, 1);
+            } else if (frame.isStrike()) {
+                score += this.getNextTosses(i, 2);
+            }
+
             frame.setScore(score);
         }
+    }
+
+    private Integer getNextTosses(int currentIndex, int numberOfTossesToRetrieve) {
+        int tossRemaining = numberOfTossesToRetrieve;
+        int indexCursor = currentIndex + 1;
+        int nextTossesSum = 0;
+        while (tossRemaining > 0 && indexCursor < this.frames.size()) {
+            Frame nextFrame = this.getFrames().get(indexCursor);
+            if (nextFrame.getFirstShot() == null) {
+                break;
+            }
+            nextTossesSum += nextFrame.getFirstShot();
+            tossRemaining--;
+            if (tossRemaining == 0) {
+                break;
+            }
+            if (nextFrame.getSecondShot() != null) {
+                nextTossesSum += nextFrame.getSecondShot();
+                tossRemaining--;
+            }
+
+            indexCursor++;
+        }
+
+        return nextTossesSum;
     }
 
     public void clear() {
