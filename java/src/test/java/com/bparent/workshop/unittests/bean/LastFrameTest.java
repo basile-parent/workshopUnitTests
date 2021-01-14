@@ -60,4 +60,32 @@ class LastFrameTest {
         assertEquals(3, frame.getThirdShot());
     }
 
+    @Test
+    public void registerShot_should_accept_third_strikes_in_a_row() {
+        // Given
+        LastFrame frame = new LastFrame();
+
+        // When
+        frame.registerShot(10);
+        frame.registerShot(10);
+        frame.registerShot(10);
+
+        // Then
+        assertEquals(10, frame.getFirstShot());
+        assertEquals(10, frame.getSecondShot());
+        assertEquals(10, frame.getThirdShot());
+    }
+
+    @Test
+    public void registerShot_should_throw_exception_if_do_a_strike_on_first_shot_and_male_more_than_10_points_on_the_2_remaining_shots() {
+        // Given
+        LastFrame frame = new LastFrame();
+        frame.registerShot(10);
+        frame.registerShot(7);
+
+        // When & Then
+        assertThrows(IllegalArgumentException.class, () -> frame.registerShot(7));
+    }
+
+
 }

@@ -18,7 +18,7 @@ public class RegularFrame extends Frame {
             throw new IllegalArgumentException("You cannot have a better score than 10 for one shot");
         }
         if (this.firstShot != null && this.firstShot + shotValue > 10) {
-            throw new IllegalArgumentException("The sum of 2 shots cannot be > 10");
+            throw new IllegalArgumentException("The sum of 2 shots cannot be > 10. First shot = " + this.firstShot + ". New shot value : " + shotValue);
         }
 
         if (this.firstShot == null) {

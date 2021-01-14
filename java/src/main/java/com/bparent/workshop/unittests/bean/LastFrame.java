@@ -25,10 +25,14 @@ public class LastFrame extends Frame {
         if (this.firstShot != null) {
             if (this.firstShot != 10) {
                 if (this.secondShot == null && this.firstShot + shotValue > 10) {
-                    throw new IllegalArgumentException("The sum of 2 shots cannot be > 10");
+                    throw new IllegalArgumentException("The sum of 2 shots cannot be > 10. First shot = " + this.firstShot + ". New shot value : " + shotValue);
                 }
                 if (this.secondShot != null && this.firstShot + this.secondShot < 10) {
                     throw new IllegalArgumentException("You don't have a third shot if you didn't do a spare or a strike");
+                }
+            } else {
+                if (this.secondShot != null && this.secondShot != 10 && this.secondShot + shotValue > 10) {
+                    throw new IllegalArgumentException("The sum of 2 shots cannot be > 10. Second shot = " + this.secondShot + ". New shot value : " + shotValue);
                 }
             }
         }
