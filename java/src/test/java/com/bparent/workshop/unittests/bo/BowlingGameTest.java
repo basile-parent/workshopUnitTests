@@ -1,5 +1,6 @@
 package com.bparent.workshop.unittests.bo;
 
+import com.bparent.workshop.unittests.util.ScoreFormatter;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -80,16 +81,18 @@ class BowlingGameTest {
     public void addShoot_should_throw_exception_if_all_shot_are_done() {
         // Given
         BowlingGame game = new BowlingGame();
-        game.addShoot(10);
-        game.addShoot(10);
-        game.addShoot(10);
-        game.addShoot(10);
-        game.addShoot(10);
-        game.addShoot(10);
-        game.addShoot(10);
-        game.addShoot(10);
-        game.addShoot(10);
-        game.addShoot(10);
+        game.addShoot(10); // Frame 1
+        game.addShoot(10); // Frame 2
+        game.addShoot(10); // Frame 3
+        game.addShoot(10); // Frame 4
+        game.addShoot(10); // Frame 5
+        game.addShoot(10); // Frame 6
+        game.addShoot(10); // Frame 7
+        game.addShoot(10); // Frame 8
+        game.addShoot(10); // Frame 9
+        game.addShoot(10); // Frame 10
+        game.addShoot(10); // Frame 10
+        game.addShoot(10); // Frame 10
 
         // When & Then
         assertThrows(IllegalStateException.class, () -> game.addShoot(1));
@@ -233,7 +236,7 @@ class BowlingGameTest {
         game.addShoot(10); // Frame 10
 
         // Then
-        assertEquals(300, game.getFrames().get(9).getScore());
+        assertEquals(300, game.getFrames().get(9).getScore(), ScoreFormatter.formatScore(game.getFrames()));
     }
 
 }

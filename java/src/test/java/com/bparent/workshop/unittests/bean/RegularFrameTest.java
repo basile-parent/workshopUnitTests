@@ -6,12 +6,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FrameTest {
+class RegularFrameTest {
 
     @Test
     public void registerShot_should_set_the_first_shot_value_on_first_call() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
 
         // When
         frame.registerShot(2);
@@ -24,7 +24,7 @@ class FrameTest {
     @Test
     public void registerShot_should_set_the_second_shot_value_on_second_call() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
 
         // When
         frame.registerShot(2);
@@ -38,7 +38,7 @@ class FrameTest {
     @Test
     public void registerShot_should_throw_exception_if_all_shot_are_done() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
         frame.registerShot(5 );
         frame.registerShot(3 );
 
@@ -49,7 +49,7 @@ class FrameTest {
     @Test
     public void registerShot_should_throw_exception_if_shot_value_is_more_than_10() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
 
         // When & Then
         assertThrows(IllegalArgumentException.class, () -> frame.registerShot(25 ));
@@ -58,7 +58,7 @@ class FrameTest {
     @Test
     public void registerShot_should_throw_exception_if_shot_sum_value_is_more_than_10() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
         frame.registerShot(5 );
 
         // When & Then
@@ -68,7 +68,7 @@ class FrameTest {
     @Test
     public void canAcceptShot_should_return_true_if_not_shot_done() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
 
         // When
         boolean canAcceptShot = frame.canAcceptShot();
@@ -80,7 +80,7 @@ class FrameTest {
     @Test
     public void canAcceptShot_should_return_true_if_first_shot_done_and_not_strike() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
         frame.registerShot(5);
 
         // When
@@ -93,7 +93,7 @@ class FrameTest {
     @Test
     public void canAcceptShot_should_return_false_if_first_shot_done_and_is_a_strike() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
         frame.registerShot(10);
 
         // When
@@ -106,7 +106,7 @@ class FrameTest {
     @Test
     public void canAcceptShot_should_return_false_if_both_shot_are_done() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
         frame.registerShot(1);
         frame.registerShot(1);
 
@@ -120,7 +120,7 @@ class FrameTest {
     @Test
     public void isSpare_should_return_false_if_sum_of_score_is_less_than_10() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
         frame.registerShot(4);
         frame.registerShot(3);
 
@@ -134,7 +134,7 @@ class FrameTest {
     @Test
     public void isSpare_should_return_true_if_sum_of_score_is_10() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
         frame.registerShot(7);
         frame.registerShot(3);
 
@@ -148,7 +148,7 @@ class FrameTest {
     @Test
     public void isSpare_should_return_false_if_first_shot_is_10() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
         frame.registerShot(10);
 
         // When
@@ -161,7 +161,7 @@ class FrameTest {
     @Test
     public void isStrike_should_return_false_if_first_shot_is_not_10() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
         frame.registerShot(4);
         frame.registerShot(3);
 
@@ -175,7 +175,7 @@ class FrameTest {
     @Test
     public void isStrike_should_return_false_if_is_a_spare() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
         frame.registerShot(7);
         frame.registerShot(3);
 
@@ -190,7 +190,7 @@ class FrameTest {
     @Test
     public void isStrike_should_return_true_if_first_shot_is_10() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
         frame.registerShot(10);
 
         // When
@@ -203,7 +203,7 @@ class FrameTest {
     @Test
     public void getAllShots_should_return_list_of_2_integers_if_the_2_shots_are_done() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
         frame.registerShot(1);
         frame.registerShot(2);
 
@@ -219,7 +219,7 @@ class FrameTest {
     @Test
     public void getAllShots_should_return_list_of_1_integers_if_1_shot_is_done() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
         frame.registerShot(1);
 
         // When
@@ -233,7 +233,7 @@ class FrameTest {
     @Test
     public void getAllShots_should_return_list_of_1_integers_if_player_has_done_a_strike() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
         frame.registerShot(10);
 
         // When
@@ -247,7 +247,7 @@ class FrameTest {
     @Test
     public void getAllShots_should_return_a_void_list_if_no_shot_is_done() {
         // Given
-        Frame frame = new Frame();
+        RegularFrame frame = new RegularFrame();
 
         // When
         List<Integer> allShots = frame.getAllShots();

@@ -1,6 +1,8 @@
 package com.bparent.workshop.unittests.bo;
 
 import com.bparent.workshop.unittests.bean.Frame;
+import com.bparent.workshop.unittests.bean.LastFrame;
+import com.bparent.workshop.unittests.bean.RegularFrame;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -15,9 +17,11 @@ public class BowlingGame {
     private List<Frame> frames = buildInitFrames();
 
     private List<Frame> buildInitFrames() {
-        return IntStream.range(0,10)
-                .mapToObj(id -> new Frame())
+        List<Frame> initFrames = IntStream.range(0, 9)
+                .mapToObj(id -> new RegularFrame())
                 .collect(Collectors.toList());
+        initFrames.add(new LastFrame());
+        return initFrames;
     }
 
     public void addShoot(Integer shotValue) {
