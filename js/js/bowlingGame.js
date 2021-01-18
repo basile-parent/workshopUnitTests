@@ -73,6 +73,7 @@ export default class BowlingGame {
   }
 
   updateScoreTable() {
-    document.getElementById("score-table").innerHTML = this.frames.map((f, index) => f.render(index + 1)).join("");
+    document.getElementById("score-table").innerHTML =
+      this.frames.map((f, index) => f.render(index + 1)).join("");
   }
 }

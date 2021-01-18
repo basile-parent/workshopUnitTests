@@ -10,20 +10,21 @@ export default class RegularFrame {
   }
 
   registerShot(shotValue) {
+    const value = +shotValue;
     if (!this.canAcceptShot()) {
       throw new Error("This frame cannot accept shots anymore");
     }
-    if (shotValue > 10) {
+    if (value > 10) {
       throw new Error("You cannot have a better score than 10 for one shot");
     }
-    if (this.firstShot !== null && this.firstShot + shotValue > 10) {
-      throw new Error("The sum of 2 shots cannot be > 10. First shot = " + this.firstShot + ". New shot value : " + shotValue);
+    if (this.firstShot !== null && this.firstShot + value > 10) {
+      throw new Error("The sum of 2 shots cannot be > 10. First shot = " + this.firstShot + ". New shot value : " + value);
     }
 
     if (this.firstShot === null) {
-      this.firstShot = shotValue;
+      this.firstShot = value;
     } else {
-      this.secondShot = shotValue;
+      this.secondShot = value;
     }
   }
 
