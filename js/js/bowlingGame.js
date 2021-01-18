@@ -13,7 +13,7 @@ export default class BowlingGame {
   }
 
   addShot(shotValue) {
-    this.updateScoreTable();
+
   }
 
   updateScoreTable() {

@@ -30,6 +30,7 @@
 
         const addShot = () => {
           game.addShot(document.getElementById('shot-value').value);
+          this.updateScoreTable();
           document.getElementById('shot-value').value = "";
         }
     </script>
