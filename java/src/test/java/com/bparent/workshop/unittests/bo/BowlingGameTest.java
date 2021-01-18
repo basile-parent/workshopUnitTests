@@ -1,6 +1,5 @@
 package com.bparent.workshop.unittests.bo;
 
-import com.bparent.workshop.unittests.util.ScoreFormatter;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -236,7 +235,7 @@ class BowlingGameTest {
         game.addShoot(10); // Frame 10
 
         // Then
-        assertEquals(300, game.getFrames().get(9).getScore(), ScoreFormatter.formatScore(game.getFrames()));
+        assertEquals(300, game.getFrames().get(9).getScore());
     }
 
 }

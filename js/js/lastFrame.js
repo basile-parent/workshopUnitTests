@@ -1,4 +1,4 @@
-import RegularFrame from "./regularFrame";
+import RegularFrame from "./regularFrame.js";
 
 export default class LastFrame extends RegularFrame {
   constructor(firstShot = null, secondShot = null, thirdShot = null, score = null) {
