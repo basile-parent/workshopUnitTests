@@ -1,6 +1,6 @@
 import BowlingGame from "./bowlingGame";
 
-describe('Dumb tests', () => {
+describe('Bowling game tests', () => {
   test('New bowling game should have 10 empty frames', () => {
     // Given
     const bowlingGame = new BowlingGame();
