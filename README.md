@@ -22,15 +22,22 @@ You can test installation is done by :
 Either open the whole project or select the "js" folder with File -> New -> Project from existing source
 ![Create new project from existing sources on IntelliJ](doc/existing-sources.jpg)
 
+Execute `npm install` to install dependencies.
+
 You can test installation is done by :
-- opening index.html file
+- opening index.html file on your browser / running `npm start` and open your browser on http://localhost:8080
 - and by running the tests : `npm run test`
 
 ![Front preview](doc/preview-front.jpg)
 
 ## Exercice
-You will implement an algorithm to calculate the score of a bowling game. 
-To simplify the exercice, we concidere there is only one person playing.
+You will implement an algorithm to calculate the score of a bowling game. To simplify the exercice, we concidere there is only one person playing.
+
+------ 
+
+💻 ⚠️ **You have to code using TDD.** ⚠
+
+------
 
 ### Entrypoints
 #### Java
@@ -53,7 +60,7 @@ Returns the state of the current game (text representation).
 In Javascript, you can add a shoot to the current game by typing a score into the input field add pressing the submit button (or the Enter key).
 The method update automatically the score table.
 
-### Bowling rules
+### Bowling rules 🎳
 A bowling game is split into 10 frames of 2 tosses each, except for the tenth which could have a third under certain condition. 
 The purpose of each frame is to bring down all 10 pins in 1 or 2 tosses. The down pins are moved aside (they're not lifted up) so each frame has a maximum total of 10 pins brought down (except for the tenth frame).
 
