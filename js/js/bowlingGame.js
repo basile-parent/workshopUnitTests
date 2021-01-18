@@ -1,4 +1,4 @@
-import Frame from "./frame.js";
+import RegularFrame from "./regularFrame";
 
 export default class BowlingGame {
   constructor() {
@@ -8,12 +8,17 @@ export default class BowlingGame {
   initScores() {
     this.frames = [];
     for (let i = 0; i < 10; i++) {
-      this.frames.push(new Frame());
+      this.frames.push(new RegularFrame());
     }
   }
 
   addShot(shotValue) {
-    this.updateScoreTable();
+    const currentFrame = this.frames.find(f => f.canAcceptShot());
+    if (!currentFrame) {
+      throw new Error("All tosses are done");
+    }
+
+    currentFrame.registerShot(shotValue);
   }
 
   updateScoreTable() {

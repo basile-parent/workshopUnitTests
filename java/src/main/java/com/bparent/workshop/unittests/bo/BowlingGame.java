@@ -28,7 +28,7 @@ public class BowlingGame {
         Frame firstAvailableFrame = frames.stream()
                 .filter(Frame::canAcceptShot)
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException("All shots are done"));
+                .orElseThrow(() -> new IllegalStateException("All tosses are done"));
         firstAvailableFrame.registerShot(shotValue);
 
         this.calculateScore();

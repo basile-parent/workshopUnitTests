@@ -12,4 +12,17 @@ describe('Bowling game tests', () => {
     expect(bowlingGame.frames[0].secondShot).toBeNull();
     expect(bowlingGame.frames[0].score).toBeNull();
   });
+
+  test('addShoot should set first shot of first frame on first call', () => {
+    // Given
+    const bowlingGame = new BowlingGame();
+
+    // When
+    bowlingGame.addShot(2);
+
+    // Then
+    expect(2).toEqual(bowlingGame.frames[0].firstShot);
+    expect(bowlingGame.frames[0].secondShot).toBeNull();
+  });
+
 });

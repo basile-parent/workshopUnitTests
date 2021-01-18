@@ -59,10 +59,21 @@ class RegularFrameTest {
     public void registerShot_should_throw_exception_if_shot_sum_value_is_more_than_10() {
         // Given
         RegularFrame frame = new RegularFrame();
-        frame.registerShot(5 );
+        frame.registerShot(5);
 
         // When & Then
-        assertThrows(IllegalArgumentException.class, () -> frame.registerShot(25 ));
+        assertThrows(IllegalArgumentException.class, () -> frame.registerShot(8 ));
+    }
+
+
+    @Test
+    public void registerShot_should_throw_exception_on_second_call_if_first_shot_was_a_strike() {
+        // Given
+        RegularFrame frame = new RegularFrame();
+        frame.registerShot(10);
+
+        // When & Then
+        assertThrows(IllegalStateException.class, () -> frame.registerShot(0));
     }
 
     @Test
@@ -217,7 +228,7 @@ class RegularFrameTest {
     }
 
     @Test
-    public void getAllShots_should_return_list_of_1_integers_if_1_shot_is_done() {
+    public void getAllShots_should_return_list_of_1_integer_if_only_1_shot_is_done() {
         // Given
         RegularFrame frame = new RegularFrame();
         frame.registerShot(1);
@@ -231,7 +242,7 @@ class RegularFrameTest {
     }
 
     @Test
-    public void getAllShots_should_return_list_of_1_integers_if_player_has_done_a_strike() {
+    public void getAllShots_should_return_list_of_1_integer_if_player_has_done_a_strike() {
         // Given
         RegularFrame frame = new RegularFrame();
         frame.registerShot(10);

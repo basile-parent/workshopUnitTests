@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 @Getter
 public class LastFrame extends Frame {
 
-    protected Integer thirdShot;
+    private Integer thirdShot;
 
     public void registerShot(Integer shotValue) {
         if (!canAcceptShot()) {
