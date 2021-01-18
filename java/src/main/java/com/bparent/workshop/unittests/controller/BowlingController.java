@@ -36,7 +36,7 @@ public class BowlingController {
     @PostMapping("/clear")
     public ResponseEntity<String> clearScore() {
         game.clear();
-        return ResponseEntity.ok("Cleareddd");
+        return ResponseEntity.ok("Cleared");
     }
 
 }
