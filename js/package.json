@@ -17,7 +17,16 @@
   },
   "homepage": "https://github.com/basile-parent/workshopUnitTests#readme",
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-jest": "^26.6.3",
     "http-server": "^0.12.3",
     "jest": "^26.6.3"
+  },
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "/"
+    ]
   }
 }
